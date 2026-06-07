@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookland – Jhamsikhel, Lalitpur</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --parchment: #F0EAD6;
+    --brown-light: #C9A96E;
+    --brown: #8B5E3C;
+    --brown-dark: #5C3D1E;
+    --ink: #1A1208;
+    --muted: #7A6A58;
+    --red-accent: #B8321A;
+    --gold: #C9A03C;
+    --white: #FFFFFF;
+    --border: rgba(139,94,60,0.2);
+    --shadow: rgba(26,18,8,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--brown-dark);
+    position: sticky; top: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--brown-light);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-admin-btn {
+    background: var(--gold);
+    color: var(--brown-dark);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-admin-btn:hover { background: var(--brown-light); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, #3A2510 60%, #1A1208 100%);
+    min-height: 88vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 60px,
+      rgba(201,160,60,0.04) 60px, rgba(201,160,60,0.04) 61px
+    );
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 760px; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--brown-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 500px;
+    margin: 1.2rem auto 2.4rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--brown-dark);
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--brown-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    padding: 14px 32px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 5rem 2rem; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--brown-dark);
+    line-height: 1.2;
+  }
+
+  .section-rule {
+    width: 56px;
+    height: 3px;
+    background: var(--gold);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── CHAMBERS (CATEGORIES) ── */
+  #chambers { background: var(--parchment); }
+
+  .chambers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .chamber-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.8rem 1.4rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .chamber-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px var(--shadow);
+    border-color: var(--brown-light);
+  }
+
+  .chamber-icon {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .chamber-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--brown-dark);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .chamber-count {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── BOOK CARDS ── */
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .book-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px var(--shadow);
+  }
+
+  .book-badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: var(--red-accent);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .book-cover {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    background: var(--parchment);
+  }
+
+  .book-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--parchment), #e8dcc8);
+    color: var(--brown);
+  }
+
+  .book-cover-placeholder span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .book-info {
+    padding: 1rem;
+  }
+
+  .book-category-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+
+  .book-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--brown-dark);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+  }
+
+  .book-author {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .book-publisher {
+    font-size: 0.72rem;
+    color: var(--brown-light);
+    font-weight: 700;
+  }
+
+  .book-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-top: 0.5rem;
+  }
+
+  /* ── ABOUT / INFO ── */
+  #about { background: var(--brown-dark); color: var(--white); }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text .section-title { color: var(--white); }
+  .about-text .section-label { color: var(--gold); }
+
+  .about-body {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    margin-top: 1.4rem;
+    font-weight: 300;
+    line-height: 1.9;
+  }
+
+  .info-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 1.4rem;
+  }
+
+  .info-card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .info-card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .info-card-value {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  .info-card-value a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  /* ── PUBLISHERS MARQUEE ── */
+  #publishers { background: var(--parchment); overflow: hidden; padding: 2.5rem 0; }
+
+  .pub-track {
+    display: flex;
+    gap: 3rem;
+    animation: slide 22s linear infinite;
+    white-space: nowrap;
+  }
+
+  .pub-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+  .pub-item::before { content: '✦ '; color: var(--gold); font-style: normal; font-size: 0.7rem; }
+
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.85rem;
+    line-height: 1.9;
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── ADMIN MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,0.7);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.4rem;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--brown-dark);
+    margin-bottom: 1.8rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.2rem; right: 1.4rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--muted);
+    line-height: 1;
+  }
+
+  .form-row { margin-bottom: 1.1rem; }
+
+  .form-row label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: var(--brown);
+  }
+
+  .form-row textarea { resize: vertical; min-height: 70px; }
+
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .tag-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+
+  .tag-btn {
+    border: 1.5px solid var(--border);
+    background: var(--cream);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+  .tag-btn.active {
+    background: var(--brown-dark);
+    border-color: var(--brown-dark);
+    color: #fff;
+  }
+
+  .form-actions {
+    display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.6rem;
+  }
+
+  .btn-cancel {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .btn-cancel:hover { border-color: var(--brown); }
+
+  .btn-save {
+    background: var(--brown-dark);
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-save:hover { background: var(--brown); }
+
+  /* ── BOOK DELETE BTN ── */
+  .book-del {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(184,50,26,0.9);
+    border: none;
+    color: #fff;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  .admin-mode .book-card .book-del { display: flex; }
+
+  /* ── PREVIEW UPLOAD ── */
+  .img-preview {
+    margin-top: 0.5rem;
+    max-height: 120px;
+    border-radius: 4px;
+    display: none;
+  }
+
+  .smooth-scroll { scroll-behavior: smooth; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    background: var(--brown-dark);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  @media(max-width: 768px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .info-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="smooth-scroll" id="top">
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#top">Book<span>land</span></a>
+  <ul class="nav-links">
+    <li><a onclick="scrollTo('new-arrivals')">New Arrivals</a></li>
+    <li><a onclick="scrollTo('best-sellers')">Best Sellers</a></li>
+    <li><a onclick="scrollTo('chambers')">Chambers</a></li>
+    <li><a onclick="scrollTo('about')">About &amp; Visit</a></li>
+  </ul>
+  <button class="nav-admin-btn" onclick="toggleAdmin()">⚙ Manage</button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Jhamsikhel, Lalitpur · Near Chicken Station</span>
+    <h1>Where Every Page<em>Tells a Story</em></h1>
+    <p class="hero-sub">Nepal's premier destination for international and national books — across every genre, for every reader.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="scrollTo('new-arrivals')">Explore New Arrivals</button>
+      <button class="btn-outline" onclick="scrollTo('best-sellers')">Best Sellers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLISHERS MARQUEE ── -->
+<div id="publishers">
+  <div class="pub-track" id="pubTrack"></div>
+</div>
+
+<!-- ── NEW ARRIVALS ── -->
+<section id="new-arrivals">
+  <div class="section-header">
+    <span class="section-label">Fresh In Store</span>
+    <h2 class="section-title">New Arrivals</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="books-grid" id="newArrivalsGrid"></div>
+  <div style="text-align:center; margin-top: 2.5rem;">
+    <button class="btn-primary" onclick="openAddModal('new-arrival')">+ Add New Arrival</button>
+  </div>
+</section>
+
+<!-- ── BEST SELLERS ── -->
+<section id="best-sellers" style="background: var(--parchment);">
+  <div class="section-header">
+    <span class="section-label">Reader Favourites</span>
+    <h2 class="section-title">Best Sellers</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="books-grid" id="bestSellersGrid"></div>
+  <div style="text-align:center; margin-top: 2.5rem;">
+    <button class="btn-primary" onclick="openAddModal('best-seller')">+ Add Best Seller</button>
+  </div>
+</section>
+
+<!-- ── ALL BOOKS ── -->
+<section id="all-books">
+  <div class="section-header">
+    <span class="section-label">Full Collection</span>
+    <h2 class="section-title">All Books</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="books-grid" id="allBooksGrid"></div>
+  <div style="text-align:center; margin-top: 2.5rem;">
+    <button class="btn-primary" onclick="openAddModal('book')">+ Add Book</button>
+  </div>
+</section>
+
+<!-- ── CHAMBERS ── -->
+<section id="chambers">
+  <div class="section-header">
+    <span class="section-label">Browse By Chamber</span>
+    <h2 class="section-title">Our Reading Chambers</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="chambers-grid">
+    <div class="chamber-card" onclick="filterByCategory('Fiction')">
+      <span class="chamber-icon">📖</span>
+      <div class="chamber-name">Fiction Chamber</div>
+      <div class="chamber-count">Novels · Short Stories · Fantasy</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Non-Fiction')">
+      <span class="chamber-icon">📚</span>
+      <div class="chamber-name">Non-Fiction Chamber</div>
+      <div class="chamber-count">Essays · Biographies · History</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Science')">
+      <span class="chamber-icon">🔬</span>
+      <div class="chamber-name">Science Chamber</div>
+      <div class="chamber-count">Physics · Biology · Tech</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Children')">
+      <span class="chamber-icon">🌈</span>
+      <div class="chamber-name">Children's Corner</div>
+      <div class="chamber-count">Picture Books · YA · Learning</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Self-Help')">
+      <span class="chamber-icon">🌟</span>
+      <div class="chamber-name">Self-Help Chamber</div>
+      <div class="chamber-count">Wellness · Business · Growth</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Nepali')">
+      <span class="chamber-icon">🇳🇵</span>
+      <div class="chamber-name">Nepali Literature</div>
+      <div class="chamber-count">Local Authors · National Publishers</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Academic')">
+      <span class="chamber-icon">🎓</span>
+      <div class="chamber-name">Academic Chamber</div>
+      <div class="chamber-count">Textbooks · References · Research</div>
+    </div>
+    <div class="chamber-card" onclick="filterByCategory('Art & Design')">
+      <span class="chamber-icon">🎨</span>
+      <div class="chamber-name">Arts &amp; Design</div>
+      <div class="chamber-count">Photography · Architecture · Craft</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="section-label">About Us</span>
+      <h2 class="section-title">Bookland — A Home for Readers</h2>
+      <p class="about-body">
+        Nestled in the heart of Jhamsikhel, Lalitpur — just a short walk from Chicken Station — Bookland is more than a bookstore. It is a sanctuary for curious minds, a gathering place for students, writers, and lifelong learners alike. We stock titles from over 80 international and national publishers, curated across eight unique reading chambers.
+      </p>
+      <p class="about-body" style="margin-top: 0.8rem;">
+        Whether you seek the latest international bestseller, a rare Nepali literary gem, or an academic textbook, Bookland has it waiting for you on our shelves.
+      </p>
+    </div>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <div class="info-card-label">Phone</div>
+        <div class="info-card-value"><a href="tel:015409054">01-5409054</a></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-label">Location</div>
+        <div class="info-card-value">Jhamsikhel, Lalitpur<br>Near Chicken Station</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🕐</div>
+        <div class="info-card-label">Hours</div>
+        <div class="info-card-value">Sun – Fri: 9am – 8pm<br>Saturday: 10am – 7pm</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🌏</div>
+        <div class="info-card-label">Publishers</div>
+        <div class="info-card-value">80+ International &amp; National Publishers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>Bookland</strong><br>
+  Jhamsikhel, Lalitpur, Nepal · Near Chicken Station<br>
+  Phone: <a href="tel:015409054" style="color:var(--gold);">01-5409054</a><br><br>
+  <span style="font-size:0.78rem; opacity:0.5;">© 2024 Bookland. All rights reserved.</span>
+</footer>
+
+<!-- ── ADD BOOK MODAL ── -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 class="modal-title" id="modalTitle">Add New Book</h3>
+
+    <div class="form-row">
+      <label>Book Title *</label>
+      <input type="text" id="fTitle" placeholder="Enter book title">
+    </div>
+    <div class="form-row-2">
+      <div class="form-row" style="margin-bottom:0">
+        <label>Author *</label>
+        <input type="text" id="fAuthor" placeholder="Author name">
+      </div>
+      <div class="form-row" style="margin-bottom:0">
+        <label>Price (NPR)</label>
+        <input type="text" id="fPrice" placeholder="e.g. 650">
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:1.1rem;">
+      <label>Publisher</label>
+      <input type="text" id="fPublisher" placeholder="e.g. Penguin Random House">
+    </div>
+    <div class="form-row">
+      <label>Category / Chamber</label>
+      <select id="fCategory">
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Science">Science</option>
+        <option value="Children">Children</option>
+        <option value="Self-Help">Self-Help</option>
+        <option value="Nepali">Nepali Literature</option>
+        <option value="Academic">Academic</option>
+        <option value="Art & Design">Art &amp; Design</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Section</label>
+      <div class="tag-row" id="sectionTags">
+        <button class="tag-btn" data-val="book" onclick="pickSection(this)">General</button>
+        <button class="tag-btn" data-val="new-arrival" onclick="pickSection(this)">New Arrival</button>
+        <button class="tag-btn" data-val="best-seller" onclick="pickSection(this)">Best Seller</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Cover Image URL (optional)</label>
+      <input type="text" id="fImgUrl" placeholder="https://..." oninput="previewUrl()">
+      <img id="fImgPreview" class="img-preview" alt="preview">
+    </div>
+    <div class="form-row">
+      <label>Description (optional)</label>
+      <textarea id="fDesc" placeholder="Short description..."></textarea>
+    </div>
+    <div class="form-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveBook()">Save Book</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── STATE ── */
+let books = JSON.parse(localStorage.getItem('bookland_books') || '[]');
+let adminMode = false;
+let editingId = null;
+let currentSection = 'book';
+
+if (books.length === 0) {
+  books = [
+    { id: 1, title: "Atomic Habits", author: "James Clear", price: "850", publisher: "Avery Publishing", category: "Self-Help", section: "best-seller", img: "https://m.media-amazon.com/images/I/81wgcld4wxL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 2, title: "The Alchemist", author: "Paulo Coelho", price: "620", publisher: "HarperCollins", category: "Fiction", section: "best-seller", img: "https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 3, title: "Sapiens", author: "Yuval Noah Harari", price: "1100", publisher: "Harvill Secker", category: "Non-Fiction", section: "best-seller", img: "https://m.media-amazon.com/images/I/713jIoMO3UL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 4, title: "Muna Madan", author: "Laxmi Prasad Devkota", price: "380", publisher: "Sajha Prakashan", category: "Nepali", section: "best-seller", img: "" },
+    { id: 5, title: "The Mountain Is You", author: "Brianna Wiest", price: "780", publisher: "Thought Catalog Books", category: "Self-Help", section: "new-arrival", img: "https://m.media-amazon.com/images/I/71YuXBivFQL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 6, title: "Fourth Wing", author: "Rebecca Yarros", price: "1400", publisher: "Entangled: Red Tower", category: "Fiction", section: "new-arrival", img: "https://m.media-amazon.com/images/I/91puhPKnR6L._AC_UF1000,1000_QL80_.jpg" },
+    { id: 7, title: "Intermezzo", author: "Sally Rooney", price: "1350", publisher: "Faber & Faber", category: "Fiction", section: "new-arrival", img: "https://m.media-amazon.com/images/I/71+TRKtBFUL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 8, title: "Parijat Ko Kavita", author: "Parijat", price: "290", publisher: "Ratna Pustak Bhandar", category: "Nepali", section: "book", img: "" },
+    { id: 9, title: "The Midnight Library", author: "Matt Haig", price: "900", publisher: "Canongate Books", category: "Fiction", section: "book", img: "https://m.media-amazon.com/images/I/81J6APjwxlL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 10, title: "A Brief History of Time", author: "Stephen Hawking", price: "1050", publisher: "Bantam Books", category: "Science", section: "book", img: "https://m.media-amazon.com/images/I/A1xkFZX5k-L._AC_UF1000,1000_QL80_.jpg" },
+  ];
+  save();
+}
+
+function save() {
+  localStorage.setItem('bookland_books', JSON.stringify(books));
+}
+
+/* ── PUBLISHERS MARQUEE ── */
+const publishers = [
+  "Penguin Random House", "HarperCollins", "Macmillan Publishers", "Simon & Schuster",
+  "Hachette Livre", "Scholastic", "Oxford University Press", "Cambridge University Press",
+  "Routledge", "Sajha Prakashan", "Ratna Pustak Bhandar", "Educational Publication House",
+  "Ekta Books", "Buddha Publication", "Bloomsbury", "Faber & Faber", "Vintage Books",
+  "Avery Publishing", "MIT Press", "Yale University Press",
+  "Penguin Random House", "HarperCollins", "Macmillan Publishers", "Simon & Schuster",
+  "Hachette Livre", "Scholastic", "Oxford University Press", "Cambridge University Press",
+  "Routledge", "Sajha Prakashan", "Ratna Pustak Bhandar", "Educational Publication House",
+  "Ekta Books", "Buddha Publication", "Bloomsbury", "Faber & Faber", "Vintage Books",
+  "Avery Publishing", "MIT Press", "Yale University Press",
+];
+
+const track = document.getElementById('pubTrack');
+publishers.forEach(p => {
+  const div = document.createElement('div');
+  div.className = 'pub-item';
+  div.textContent = p;
+  track.appendChild(div);
+});
+
+/* ── RENDER ── */
+function makeCard(book) {
+  const hasCover = book.img && book.img.trim();
+  const badge = book.section === 'new-arrival' ? 'New Arrival' : book.section === 'best-seller' ? 'Best Seller' : '';
+  return `
+    <div class="book-card" id="book-${book.id}">
+      ${badge ? `<span class="book-badge">${badge}</span>` : ''}
+      <button class="book-del" onclick="deleteBook(${book.id})" title="Remove">✕</button>
+      ${hasCover
+        ? `<img class="book-cover" src="${book.img}" alt="${book.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+           <div class="book-cover-placeholder" style="display:none;">📖<span>No Cover</span></div>`
+        : `<div class="book-cover-placeholder">📖<span>No Cover</span></div>`
+      }
+      <div class="book-info">
+        <div class="book-category-tag">${book.category}</div>
+        <div class="book-title">${book.title}</div>
+        <div class="book-author">by ${book.author}</div>
+        ${book.publisher ? `<div class="book-publisher">${book.publisher}</div>` : ''}
+        ${book.price ? `<div class="book-price">NPR ${book.price}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+function render() {
+  const na = books.filter(b => b.section === 'new-arrival');
+  const bs = books.filter(b => b.section === 'best-seller');
+  const all = books;
+
+  document.getElementById('newArrivalsGrid').innerHTML = na.length
+    ? na.map(makeCard).join('')
+    : '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No new arrivals yet. Click below to add one.</p>';
+
+  document.getElementById('bestSellersGrid').innerHTML = bs.length
+    ? bs.map(makeCard).join('')
+    : '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No best sellers yet. Click below to add one.</p>';
+
+  document.getElementById('allBooksGrid').innerHTML = all.length
+    ? all.map(makeCard).join('')
+    : '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No books yet.</p>';
+}
+
+render();
+
+/* ── SCROLL ── */
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── ADMIN MODE ── */
+function toggleAdmin() {
+  adminMode = !adminMode;
+  document.body.classList.toggle('admin-mode', adminMode);
+  toast(adminMode ? '⚙ Admin mode ON — click ✕ on cards to remove books' : 'Admin mode OFF');
+}
+
+/* ── MODAL ── */
+function openAddModal(section) {
+  editingId = null;
+  currentSection = section;
+  document.getElementById('fTitle').value = '';
+  document.getElementById('fAuthor').value = '';
+  document.getElementById('fPrice').value = '';
+  document.getElementById('fPublisher').value = '';
+  document.getElementById('fCategory').value = 'Fiction';
+  document.getElementById('fImgUrl').value = '';
+  document.getElementById('fDesc').value = '';
+  document.getElementById('fImgPreview').style.display = 'none';
+
+  document.querySelectorAll('.tag-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.val === section);
+  });
+
+  const labels = { book: 'Add New Book', 'new-arrival': 'Add New Arrival', 'best-seller': 'Add Best Seller' };
+  document.getElementById('modalTitle').textContent = labels[section] || 'Add Book';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function pickSection(btn) {
+  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentSection = btn.dataset.val;
+}
+
+function previewUrl() {
+  const url = document.getElementById('fImgUrl').value.trim();
+  const prev = document.getElementById('fImgPreview');
+  if (url) { prev.src = url; prev.style.display = 'block'; }
+  else { prev.style.display = 'none'; }
+}
+
+function saveBook() {
+  const title = document.getElementById('fTitle').value.trim();
+  const author = document.getElementById('fAuthor').value.trim();
+  if (!title || !author) { toast('Please enter title and author'); return; }
+
+  const book = {
+    id: editingId || Date.now(),
+    title,
+    author,
+    price: document.getElementById('fPrice').value.trim(),
+    publisher: document.getElementById('fPublisher').value.trim(),
+    category: document.getElementById('fCategory').value,
+    section: currentSection,
+    img: document.getElementById('fImgUrl').value.trim(),
+    desc: document.getElementById('fDesc').value.trim(),
+  };
+
+  if (editingId) {
+    books = books.map(b => b.id === editingId ? book : b);
+  } else {
+    books.push(book);
+  }
+
+  save();
+  render();
+  closeModal();
+  toast('✓ Book saved successfully!');
+}
+
+function deleteBook(id) {
+  if (!adminMode) return;
+  books = books.filter(b => b.id !== id);
+  save(); render();
+  toast('Book removed.');
+}
+
+/* ── FILTER BY CATEGORY ── */
+function filterByCategory(cat) {
+  const el = document.getElementById('all-books');
+  el.scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    const filtered = books.filter(b => b.category === cat);
+    document.getElementById('allBooksGrid').innerHTML = filtered.length
+      ? filtered.map(makeCard).join('')
+      : `<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No books in ${cat} yet.</p>`;
+
+    document.querySelector('#all-books .section-title').textContent = cat + ' Books';
+    toast(`Showing ${cat} books`);
+  }, 400);
+}
+
+/* ── TOAST ── */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* ── CLOSE MODAL ON OVERLAY CLICK ── */
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+</script>
+</body>
+</html>
